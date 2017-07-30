@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    
+    <div class="wrapper">
+      <h2>Mystery Word</h2>
+      <p class ="guesses">You have _ guesses left.</p>
+      <p>_ _ _ _ _ _ _ _</p>
+      <input type="text" name="guess" value="">
+      <button type="submit" name="button">Make a guess</button>
+      <p class ="alreadyGuessed">Letters guessed: _ _ _ _</p>
+    </div>
   </body>
 </html>

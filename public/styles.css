@@ -1,0 +1,30 @@
+body {
+  background-image: url("https://www.s-capers.com/e/wp-content/uploads/2015/03/background-parra.jpg");
+  background-size: auto;
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-family: cursive;
+}
+
+h2 {
+  text-align: center;
+  font-size: 4em;
+}
+
+p {
+  text-align: center;
+  font-size: 2em;
+}
+
+button {
+  font-family: cursive;
+  font-size: 2em;
+  background-color: darkgray;
+}
+
+input {
+  font-family: cursive;
+  font-size: 2em;
+  width: 6em;
+}

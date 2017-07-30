@@ -11,10 +11,14 @@ app.use(express.static("public"))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-const words = fs
-  .readFileSync("/usr/share/dict/words", "utf-8")
-  .toLowerCase()
-  .split("\n")
+// const words = fs
+//   .readFileSync("/usr/share/dict/words", "utf-8")
+//   .toLowerCase()
+//   .split("\n")
+
+app.get("/", (req, res) => {
+  res.render("home", req.body)
+})
 
 app.listen(3000, (req, res) => {
   console.log("hey good lookin")
