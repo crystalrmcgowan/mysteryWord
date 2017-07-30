@@ -16,12 +16,26 @@ app.use(express.static("public"))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
+let underscores = []
+let count = 8
+
 let randomWord = words[Math.floor(Math.random()*words.length)]
 console.log(randomWord);
 
+const didTheyChooseALetter = (req, res, next) => {
+  if (req.body.guess) {
+    console.log(underscores);
+    next()
+  } else {
+    res.render("noinput")
+  }
+}
+
 app.get("/", (req, res) => {
-  res.render("home", req.body)
+  res.render("home")
 })
+
+app.use(didTheyChooseALetter)
 
 app.listen(3000, (req, res) => {
   console.log("hey good lookin")

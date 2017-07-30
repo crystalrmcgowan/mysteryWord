@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>No Guesses Found</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="noInputWrapper">
+      <h2>You must guess a letter</h2>
+      <button type="button" name="button" id="goBack" onclick="location.href='http://localhost:3000/'">Go Back</button>
+    </div>
+  </body>
+</html>

@@ -23,6 +23,15 @@ button {
   background-color: darkgray;
 }
 
+.noInputWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+#goBack {
+  background-color: darkgray;
+}
+
 input {
   font-family: cursive;
   font-size: 2em;

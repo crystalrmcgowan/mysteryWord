@@ -8,11 +8,15 @@
   <body>
     <div class="wrapper">
       <h2>Mystery Word</h2>
-      <p class ="guesses">You have _ guesses left.</p>
-      <p>_ _ _ _ _ _ _ _</p>
-      <input type="text" name="guess" value="">
-      <button type="submit" name="button">Make a guess</button>
-      <p class ="alreadyGuessed">Letters guessed: _ _ _ _</p>
+      <p>You have {{count}} guesses left.</p>
+      <p>
+        {{#underscores}}{{.}}{{/underscores}}
+      </p>
+      <form class="" action="/" method="post">
+        <input type="text" name="guess" maxlength="1">
+        <button type="submit" name="button">Make a guess</button>
+      </form>
+      <p>Letters guessed: {{#alreadyguessed}}{{.}}{{/alreadyguessed}} </p>
     </div>
   </body>
 </html>
