@@ -7,16 +7,21 @@
   </head>
   <body>
     <div class="wrapper">
+
       <h2>Mystery Word</h2>
-      <p>You have {{count}} guesses left.</p>
-      <p>
-        {{#underscores}}{{.}}{{/underscores}}
-      </p>
+
+      <p>You have _ guesses left.</p>
+
+      <p> {{#underscores}}{{.}}{{/underscores}} </p>
+
       <form class="" action="/" method="post">
         <input type="text" name="guess" maxlength="1">
         <button type="submit" name="button">Make a guess</button>
       </form>
-      <p>Letters guessed: {{#alreadyguessed}}{{.}}{{/alreadyguessed}} </p>
+
+      <p>Letters guessed:
+        {{#alreadyguessed}}{{.}}{{/alreadyguessed}}
+      </p>
     </div>
   </body>
 </html>

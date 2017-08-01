@@ -6,6 +6,7 @@
     "express-session": "^1.15.4",
     "express-validator": "^3.2.1",
     "file-system": "^2.2.2",
+    "jest": "^20.0.4",
     "mustache-express": "^1.2.5"
   }
 }

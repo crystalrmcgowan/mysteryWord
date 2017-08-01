@@ -17,7 +17,9 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 let underscores = []
+let guesses = []
 let count = 8
+const PLACEHOLDER = '_'
 
 let randomWord = words[Math.floor(Math.random()*words.length)]
 console.log(randomWord);
@@ -33,6 +35,10 @@ const didTheyChooseALetter = (req, res, next) => {
 
 app.get("/", (req, res) => {
   res.render("home")
+})
+
+app.post("home", (req, res) => {
+  res.render(randomWord)
 })
 
 app.use(didTheyChooseALetter)
