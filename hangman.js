@@ -19,12 +19,17 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 let guess = []
 let alreadyGuessed = []
-let underscores = []
 let count = 8
-const PLACEHOLDER = '_'
 
 const randomWord = words[Math.floor(Math.random()*words.length)]
 console.log(randomWord);
+const randomWordLength = randomWord.split('')
+let PLACEHOLDER = randomWordLength.map(x => {
+  return '_'
+})
+
+
+
 
 const didTheyChooseALetter = (req, res, next) => {
   if (req.body.guess) {
@@ -35,7 +40,7 @@ const didTheyChooseALetter = (req, res, next) => {
 }
 
 const theyAreOverEightGuesses = (req,res, next) => {
-  if (req.body.alreadyGuessed.length >= 8) {
+  if (req.body.length >= 8) {
     res.redirect('/noinput')
   }
   res.redirect("/")
@@ -55,17 +60,13 @@ const hangman = (randomWord, guesses) => {
 }
 
 app.get("/", (req, res) => {
-  res.render("home", {randomWord: randomWord})
+  res.render("home", {guess, alreadyGuessed, PLACEHOLDER, count})
 })
 
 app.use(didTheyChooseALetter)
 
 app.post("/guessedALetter", (req, res) =>{
   res.redirect("/")
-})
-
-app.get("/noinput", (req, res) => {
-  res.render("noinput")
 })
 
 app.use(theyAreOverEightGuesses)

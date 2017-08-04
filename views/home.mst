@@ -10,7 +10,12 @@
 
       <h2>Mystery Word</h2>
       <p>{{randomWord}}</p>
-      <p>You have _ guesses left.</p>
+      <p>
+        {{#PLACEHOLDER}}
+          <span class ="answer">{{.}}</span>
+        {{/PLACEHOLDER}}
+      </p>
+      <p>You have {{count}} guesses left.</p>
 
       <form class="" action="/" method="post">
         <input type="text" name="guess" maxlength="1">
