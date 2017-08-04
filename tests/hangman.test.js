@@ -1,7 +1,11 @@
-const { hangman } = require("../main.js")
+const { hangman } = require("../hangman.js")
 
-desribe('hangman', () => {
+describe('hangman', () => {
   test('a single letter', () => {
-    expect(hangman('a', '')).toBe('_')
+    expect(hangman('a')).toBe('_')
+  })
+
+  test('multi-letter word', () => {
+    expect(hangman('rawr')).toBe('____')
   })
 })
