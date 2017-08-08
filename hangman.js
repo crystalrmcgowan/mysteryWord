@@ -23,13 +23,11 @@ let count = 8
 
 const randomWord = words[Math.floor(Math.random()*words.length)]
 console.log(randomWord);
+
 const randomWordLength = randomWord.split('')
 let PLACEHOLDER = randomWordLength.map(x => {
   return '_'
 })
-
-
-
 
 const didTheyChooseALetter = (req, res, next) => {
   if (req.body.guess) {
@@ -60,12 +58,32 @@ const hangman = (randomWord, guesses) => {
 }
 
 app.get("/", (req, res) => {
-  res.render("home", {guess, alreadyGuessed, PLACEHOLDER, count})
+  res.render("home", { guess: guess, alreadyGuessed: alreadyGuessed, PLACEHOLDER, count})
+})
+
+app.get("/win", (req,res) => {
+  res.render('win')
+})
+
+app.get("/lose", (req, res) =>{
+  res.render('lose')
 })
 
 app.use(didTheyChooseALetter)
 
-app.post("/guessedALetter", (req, res) =>{
+app.post("/guessedALetter", (req, res) => {
+  if (randomWordLength.includes(req.body.alreadyGuessed)) {
+    randomWordLength.forEach(function(letter, home) {
+      if (letter === req.body.alreadyGuessed) {
+        PLACEHOLDER[home] = letter
+      }
+    })
+  } else {
+    count -=1
+    if (count <= 0) {
+      console.log('yuno answer right?!');
+    }
+  }
   res.redirect("/")
 })
 

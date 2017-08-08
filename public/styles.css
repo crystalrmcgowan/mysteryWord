@@ -37,3 +37,8 @@ input {
   font-size: 2em;
   width: 6em;
 }
+
+.loseWrapper {
+  display: flex;
+  flex-direction: column;
+}

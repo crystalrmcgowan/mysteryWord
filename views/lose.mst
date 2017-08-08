@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>You Lose</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="loseWrapper">
+      <h2>You Lose!</h2>
+      <img src="https://media.giphy.com/media/10TChms09MZfUY/giphy.gif" alt="losegiphy">
+      <button type="button" name="button" id="goBack" onclick="location.href='http://localhost:3000/'">Play Again</button>
+    </div>
+  </body>
+</html>
