@@ -16,15 +16,17 @@
       </p>
       <p>You have {{count}} guesses left.</p>
 
-      <form class="" action="/" method="post">
+      <form class="" action="/guessedALetter" method="post">
         <input type="text" name="guess" maxlength="1">
         <button type="submit" name="button">Make a guess</button>
       </form>
 
       <p>Letters guessed: </p>
-      {{#alreadyguessed}}
-      {{.}}
-      {{/alreadyguessed}}
+      <p>{{#alreadyGuessed}}
+         {{.}}
+         {{/alreadyGuessed}}
+      </p>
+
     </div>
   </body>
 </html>

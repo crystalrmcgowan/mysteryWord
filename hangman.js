@@ -72,25 +72,29 @@ app.get("/lose", (req, res) =>{
 app.use(didTheyChooseALetter)
 
 app.post("/guessedALetter", (req, res) => {
-  if (randomWordLength.includes(req.body.alreadyGuessed)) {
+  if (randomWordLength.includes(req.body.guess)) {
     randomWordLength.forEach(function(letter, home) {
-      if (letter === req.body.alreadyGuessed) {
+      if (letter === req.body.guess) {
         PLACEHOLDER[home] = letter
       }
     })
   } else {
     count -=1
-    if (count <= 0) {
+    if (PLACEHOLDER.join(',') != randomWordLength.join(',') && count <= 0) {
       console.log('yuno answer right?!');
+        res.redirect("/lose")
     }
+  }
+  alreadyGuessed.push(req.body.guess)
+  if (PLACEHOLDER.join(',') === randomWordLength.join(',') && count >= 0) {
+    res.redirect("/win")
   }
   res.redirect("/")
 })
+
 
 app.use(theyAreOverEightGuesses)
 
 app.listen(3000, (req, res) => {
   console.log("hey good lookin")
 })
-
-module.exports = { hangman }
