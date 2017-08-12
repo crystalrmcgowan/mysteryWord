@@ -11,22 +11,19 @@
       <p>{{randomWord}}</p>
       <p>
         {{#PLACEHOLDER}}
-          <span class ="answer">{{.}}</span>
+        <span class ="answer">{{.}}</span>
         {{/PLACEHOLDER}}
       </p>
       <p>You have {{count}} guesses left.</p>
-
       <form class="" action="/guessedALetter" method="post">
         <input type="text" name="guess" maxlength="1">
         <button type="submit" name="button">Make a guess</button>
       </form>
-
       <p>Letters guessed: </p>
       <p>{{#alreadyGuessed}}
          {{.}}
          {{/alreadyGuessed}}
       </p>
-
     </div>
   </body>
 </html>

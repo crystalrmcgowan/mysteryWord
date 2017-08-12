@@ -6,38 +6,31 @@ body {
   justify-content: center;
   font-family: cursive;
 }
-
 h2 {
   text-align: center;
   font-size: 4em;
 }
-
 p {
   text-align: center;
   font-size: 2em;
 }
-
 button {
   font-family: cursive;
   font-size: 2em;
   background-color: darkgray;
 }
-
 .noInputWrapper {
   display: flex;
   flex-direction: column;
 }
-
 #goBack {
   background-color: darkgray;
 }
-
 input {
   font-family: cursive;
   font-size: 2em;
   width: 6em;
 }
-
 .loseWrapper {
   display: flex;
   flex-direction: column;

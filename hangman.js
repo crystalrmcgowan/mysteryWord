@@ -7,7 +7,10 @@ const expressSession = require("express-session")
 const expressValidator = require("express-validator")
 
 const fs = require("fs")
-const words = fs.readFileSync("/usr/share/dict/words", "utf-8").toLowerCase().split("\n")
+const words = fs
+  .readFileSync("/usr/share/dict/words", "utf-8")
+  .toLowerCase()
+  .split("\n")
 
 app.engine("mst", mustacheExpress())
 app.set("views", "./views")
@@ -21,12 +24,12 @@ let guess = []
 let alreadyGuessed = []
 let count = 8
 
-const randomWord = words[Math.floor(Math.random()*words.length)]
-console.log(randomWord);
+const randomWord = words[Math.floor(Math.random() * words.length)]
+console.log(randomWord)
 
-const randomWordLength = randomWord.split('')
+const randomWordLength = randomWord.split("")
 let PLACEHOLDER = randomWordLength.map(x => {
-  return '_'
+  return "_"
 })
 
 const didTheyChooseALetter = (req, res, next) => {
@@ -37,9 +40,9 @@ const didTheyChooseALetter = (req, res, next) => {
   }
 }
 
-const theyAreOverEightGuesses = (req,res, next) => {
+const theyAreOverEightGuesses = (req, res, next) => {
   if (req.body.length >= 8) {
-    res.redirect('/noinput')
+    res.redirect("/noinput")
   }
   res.redirect("/")
 }
@@ -58,15 +61,20 @@ const hangman = (randomWord, guesses) => {
 }
 
 app.get("/", (req, res) => {
-  res.render("home", { guess: guess, alreadyGuessed: alreadyGuessed, PLACEHOLDER, count})
+  res.render("home", {
+    guess: guess,
+    alreadyGuessed: alreadyGuessed,
+    PLACEHOLDER,
+    count
+  })
 })
 
-app.get("/win", (req,res) => {
-  res.render('win')
+app.get("/win", (req, res) => {
+  res.render("win")
 })
 
-app.get("/lose", (req, res) =>{
-  res.render('lose')
+app.get("/lose", (req, res) => {
+  res.render("lose")
 })
 
 app.use(didTheyChooseALetter)
@@ -79,19 +87,18 @@ app.post("/guessedALetter", (req, res) => {
       }
     })
   } else {
-    count -=1
-    if (PLACEHOLDER.join(',') != randomWordLength.join(',') && count <= 0) {
-      console.log('yuno answer right?!');
-        res.redirect("/lose")
+    count -= 1
+    if (PLACEHOLDER.join(",") != randomWordLength.join(",") && count <= 0) {
+      console.log("yuno answer right?!")
+      res.redirect("/lose")
     }
   }
   alreadyGuessed.push(req.body.guess)
-  if (PLACEHOLDER.join(',') === randomWordLength.join(',') && count >= 0) {
+  if (PLACEHOLDER.join(",") === randomWordLength.join(",") && count >= 0) {
     res.redirect("/win")
   }
   res.redirect("/")
 })
-
 
 app.use(theyAreOverEightGuesses)
 
